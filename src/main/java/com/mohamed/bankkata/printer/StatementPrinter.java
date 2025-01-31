@@ -20,8 +20,8 @@ public class StatementPrinter {
         for (Transaction transaction : transactions) {
             balance += transaction.getAmount();
             String date = transaction.getDate().format(DATE_FORMATTER);
-            String amount = String.format("%-7d", transaction.getAmount()); // Alignement de la colonne Amount
-            String balanceStr = String.format("%-7d", balance); // Alignement de la colonne Balance
+            String amount = String.format("%-7d", transaction.getAmount());
+            String balanceStr = String.format("%-7d", balance);
 
             System.out.println(date + " | " + amount + " | " + balanceStr);
         }

@@ -23,7 +23,7 @@ class StatementPrinterTest {
     @BeforeEach
     void setUp() {
         statementPrinter = new StatementPrinter();
-        System.setOut(new PrintStream(outContent, true));  // ✅ Auto-flush pour éviter les blocages
+        System.setOut(new PrintStream(outContent, true));
     }
 
     @Test
@@ -35,16 +35,16 @@ class StatementPrinterTest {
                 new Transaction(-500, LocalDate.of(2012, 1, 14))
         );
 
-        // When
+
         statementPrinter.print(transactions);
 
-        // Then (Affichage pour debug)
+
         String output = outContent.toString().trim();
         System.out.println("=== Sortie réelle ===");
         System.out.println(output);
         System.out.println("=====================");
 
-        // Normalisation de l'output pour éviter les erreurs d'espaces
+
         String normalizedOutput = output.replaceAll("\\s+", " ");
         System.out.println("=== Sortie normalisée ===");
         System.out.println(normalizedOutput);
@@ -52,7 +52,7 @@ class StatementPrinterTest {
 
         assertTrue(normalizedOutput.contains("Date | Amount | Balance"));
 
-        // Formatter pour s'assurer du bon format de la date
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
         String date1 = LocalDate.of(2012, 1, 10).format(formatter);
